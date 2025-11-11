@@ -21,7 +21,7 @@ This project integrates computer vision and machine learning to help e-commerce 
 |------------|------------|-------------|
 | **Frontend** | React (Vite + TypeScript) | User interface for uploading images and viewing results |
 | **Backend** | Flask (Python) | REST API for image & metadata inference |
-| **Model 1** | ResNet50 (Keras/TensorFlow) | Deep CNN for product & color classification |
+| **Model 1** | ResNet50 (Pytorch) | Deep CNN for product & color classification |
 | **Model 2** | XGBoost | Predicts product price based on metadata |
 | **Database** | None | Stateless system (no external DB required) |
 
@@ -53,52 +53,20 @@ cd backend
 ```
 
 # Create and Activate Virtual Environment
+Create venv
 ```bash
-# Create venv
 python -m venv venv
+```
+Activate venv
 
-# Activate venv
-# On Windows:
+On Windows:
+```bash
 venv\Scripts\activate
-# On macOS/Linux:
+```
+On macOS/Linux:
+```bash
 source venv/bin/activate
 ```
-
-## Model Setup Instructions (for `best_model.h5`)
-
-### Option 1 — Auto-Download (Recommended)
-
-1. Open `fashion_model.py`
-2. Replace `YOUR_FILE_ID_HERE` with your Google Drive file ID
-3. Run the following command:
-   ```bash
-   python fashion_model.py
-   ```
-4. The script will:
-- Check if best_model.h5 exists
-- Automatically download it from Google Drive (if missing)
-- Save it in backend/models/best_model.h5
-
-#### How to Get Your Google Drive File ID:
-- Upload best_model.h5 to Google Drive
-- Right-click → Share → Anyone with link
-- Copy the link: https://drive.google.com/file/d/FILE_ID_HERE/view
-- Extract the FILE_ID_HERE portion and place it inside fashion_model.py
-
-### Option 2 — Manual Setup
-
-1. **Download** `best_model.h5` manually from your own Google Drive or shared link.  
-2. **Place the file inside: backend/models/best_model.h5**
-3.  **Verify your folder structure:**
-backend/
-├── app.py
-├── models/
-│ ├── best_model.h5
-│ ├── xgb_price_model.pkl
-│ └── merged_articles_transactions.csv
-
----
-
 
 # Install Dependencies
 ```bash
@@ -131,7 +99,7 @@ backend/
 
 ├── models/
 
-│   ├── best_model.h5
+│   ├── best_model.pth
 
 │   ├── xgb_price_model.pkl
 
@@ -199,7 +167,7 @@ Automated-Product-Tagging-for-E-commerce/
 
 │   ├── models/
 
-│   │   ├── best_model.h5
+│   │   ├── best_model.pth
 
 │   │   ├── xgb_price_model.pkl
 
